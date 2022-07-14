@@ -1,24 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { combineReducers, createStore } from 'redux';
-import { BrowserRouter } from 'react-router-dom';
+import React from "react";
+import ReactDOM from "react-dom";
+// import { Provider } from 'react-redux';
+// import { combineReducers, createStore } from 'redux';
 
-import './index.css';
-import App from './App';
-import productReducer from './store/reducers/products';
+import { BrowserRouter } from "react-router-dom";
+import "./index.css";
+import App from "./App";
 
-const rootReducer = combineReducers({
-  shop: productReducer
-});
+// import ProductsReducer from './store/reducers/products';
 
-const store = createStore(rootReducer);
+import ProductsProvider from "./context/products-context";
+
+// const rootReducer = combineReducers({
+//   shop: productReducer
+// });
+
+// const store = createStore(rootReducer);
 
 ReactDOM.render(
-  <Provider store={store}>
+  <ProductsProvider>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </Provider>,
-  document.getElementById('root')
+  </ProductsProvider>,
+  document.getElementById("root")
 );
